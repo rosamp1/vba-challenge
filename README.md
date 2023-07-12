@@ -4,7 +4,6 @@ Link to Excel file below as it is too large to upload
 https://drive.google.com/file/d/1jUxpHpfU9RmqHj5IFXQlcUQABnUWpxcO/view?usp=drive_link 
 
 Code written for this challenge below:
-
 Sub vba_challenge_yearly_change()
 
  For Each ws In Worksheets
@@ -23,18 +22,12 @@ Sub vba_challenge_yearly_change()
     'Total Stock Volume
     Dim Total_Inv_Volume As Double
     Total_Inv_Volume = 0
-   
-   
-    
+      
     Dim Summary_Table_Row As Integer
-    
-    
+     
     'Formula for it to run to last row
     LastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-    
-   
-  
-    
+     
     Summary_Table_Row = 2
     
     'Add Column Headers
@@ -47,14 +40,11 @@ Sub vba_challenge_yearly_change()
     ws.Range("O4") = "Greatest Total Volume"
     ws.Range("P1") = "Ticker"
     ws.Range("Q1") = "Value"
-    
-
-      
-    'Loop through all tickers to last row
+        
+   'Loop through all tickers to last row
     
     For i = 2 To LastRow
-    
-    
+     
     'Check to see if we are still within the same ticker name, if not....
     If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
     
@@ -86,9 +76,7 @@ Sub vba_challenge_yearly_change()
       
     'Add one to the summary Table
        Summary_Table_Row = Summary_Table_Row + 1
-       
-        
-    
+           
     ' Reset the  total
     
     Yearly_Change_Total = 0
@@ -96,7 +84,6 @@ Sub vba_challenge_yearly_change()
     Total_Inv_Volume = 0
     
     Per_Change = 0
-
     
     Else
     
@@ -105,16 +92,12 @@ Sub vba_challenge_yearly_change()
         Total_Inv_Volume = Total_Inv_Volume + ws.Cells(i, 7).Value
         
         Per_Change = Per_Change + ((ws.Cells(i, 6).Value - ws.Cells(i, 3).Value) / ws.Cells(i, 3).Value)
-
-        
-        
+   
     End If
     
 Next i
 
-Resources below:
-
-    'Column Formatting, resource for formatting -  from https://www.reddit.com/r/vba/comments/9ksy0f/need_help_with_looping_through_stock_ticker_data/
+'Column Formatting, resource for formatting -  from https://www.reddit.com/r/vba/comments/9ksy0f/need_help_with_looping_through_stock_ticker_data/
     
    ws.Columns("K").NumberFormat = "0.00%"
    
@@ -168,12 +151,13 @@ With rngFormat.FormatConditions.Add(Type:=xlCellValue, Operator:=xlGreater, Form
 End With
 
    Next ws
-
-   
-
 End Sub
 
 
+
+
+
+Resources below used as guidance to build on my code:
 
  'Formatting cells, Conditional Formatting with assitance from chat GPT
 ![image](https://github.com/rosamp1/vba-challenge/assets/132237292/c3e6b1a3-efce-4219-9cfe-9a801b34cd77)
